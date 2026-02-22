@@ -2,10 +2,21 @@ import { useState } from "react"
 import React from 'react'
 
 
-const SearchBar = () => {
+const SearchBar = ({fetchWeather}) => {
     const [city, setCity] = useState("")
+
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+
+        if(city.trim){
+            fetchWeather(city)
+            setCity("")
+        }
+
+
+    }
   return (
-    <form className="flex mt-1">
+    <form className="flex mt-1" onSubmit={handleSubmit}>
         <input className='p-2 border border-gray-300 outline-none flex-1 rounded-l-lg border-r-0'
         type="text" placeholder='city'
         value={city}
