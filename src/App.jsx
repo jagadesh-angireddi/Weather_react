@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import SearchBar from './components/SearchBar'
 import WeatherCard from './components/WeatherCard'
+import video from './video.mp4'
 
 const App = () => {
 
@@ -40,8 +41,12 @@ const App = () => {
   }
 
   return (
-    <div className='min-h-screen bg-blue-100 flex flex-col justify-center items-center'>
-      <div className='bg-black/90 text-white rounded-lg shadow-lg p-8 max-w-md w-full '>
+    <div className='min-h-screen bg-blue-100 flex flex-col justify-center items-center relative overflow-hidden'>
+      <video className='w-full h-full absolute top-0 left-0 object-cover' autoPlay loop muted>
+       
+        <source src={video} type='video/mp4'></source>Your browser doesn't support Video tag</video>
+      <div className='absolute top-0 left-0 w-full h-full bg-black/20 z-1'></div>
+      <div className='bg-black/90 text-white rounded-lg shadow-lg p-8 max-w-md w-full z-10 '>
         <h1 className='text-center text-3xl font-bold mb-2'>Weather app</h1>
         <SearchBar fetchWeather={fetchWeather}></SearchBar>
         {loading&&<p className='text-center mt-1.5'>Loading...</p>}
